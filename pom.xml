@@ -1,0 +1,232 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>sampletab_converters_myequivalents</groupId>
+	<artifactId>sampletab_converters_myequivalents</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>coconut.ebi.ac.uk-releases</id>
+			<name>coconut.ebi.ac.uk-releases</name>
+			<url>http://coconut.ebi.ac.uk:8081/artifactory/local-repo</url>
+		</repository>
+		<snapshotRepository>
+			<id>coconut.ebi.ac.uk-snapshots</id>
+			<name>coconut.ebi.ac.uk.ebi.ac.uk-snapshots</name>
+			<url>http://coconut.ebi.ac.uk:8081/artifactory/local-repo</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
+	<!-- Git connection -->
+	<scm>
+		<connection>scm:git:git@github.com:EBIBioSamples/sampletab_converters_myequivalents.git</connection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<repositories>
+		<!-- internal repository -->
+		<repository>
+			<id>coconut.ebi.ac.uk-snapshots</id>
+			<name>Coconut Snapshot Repository</name>
+			<url>http://coconut.ebi.ac.uk:8081/artifactory/local-repo/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>limpopo-repo</id>
+			<name>Limpopo Mini-SF Repository</name>
+			<url>http://limpopo.sourceforge.net/maven/repo</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+
+		<!-- testing -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<!-- profile for development, uses files from resources-development -->
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources-development</directory>
+					</resource>
+				</resources>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>uk.ac.ebi.fgpt</groupId>
+					<artifactId>sampletab-converters</artifactId>
+					<version>1.0.10-SNAPSHOT</version>
+				</dependency>
+				<!-- MyEquivalents dependencies -->
+				<!-- to write directly to database -->
+				<dependency>
+					<groupId>uk.ac.ebi.fg</groupId>
+					<artifactId>myequivalents-db</artifactId>
+					<version>0.3.1-SNAPSHOT</version>
+					<exclusions>
+						<exclusion>
+							<artifactId>commons-io</artifactId>
+							<groupId>commons-io</groupId>
+						</exclusion>
+						<exclusion>
+							<artifactId>commons-lang</artifactId>
+							<groupId>commons-lang</groupId>
+						</exclusion>
+						<exclusion>
+							<artifactId>jaxb-api</artifactId>
+							<groupId>javax.xml.bind</groupId>
+						</exclusion>
+						<exclusion>
+							<artifactId>jutils</artifactId>
+							<groupId>uk.ac.ebi</groupId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+				<!-- to access via the web interface -->
+				<dependency>
+					<groupId>uk.ac.ebi.fg</groupId>
+					<artifactId>myequivalents-wscli</artifactId>
+					<version>0.3.1-SNAPSHOT</version>
+					<exclusions>
+						<exclusion>
+							<artifactId>logback-classic</artifactId>
+							<groupId>ch.qos.logback</groupId>
+						</exclusion>
+						<exclusion>
+							<artifactId>commons-lang</artifactId>
+							<groupId>commons-lang</groupId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+			</dependencies>
+		</profile>
+
+		<!-- profile for production, uses files from resources-production -->
+		<profile>
+			<id>production</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources-production</directory>
+					</resource>
+				</resources>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>uk.ac.ebi.fgpt</groupId>
+					<artifactId>sampletab-converters</artifactId>
+					<version>1.0.9</version>
+				</dependency>
+				<!-- MyEquivalents dependencies -->
+				<!-- to write directly to database -->
+				<dependency>
+					<groupId>uk.ac.ebi.fg</groupId>
+					<artifactId>myequivalents-db</artifactId>
+					<version>0.3</version>
+					<exclusions>
+						<exclusion>
+							<artifactId>commons-io</artifactId>
+							<groupId>commons-io</groupId>
+						</exclusion>
+						<exclusion>
+							<artifactId>commons-lang</artifactId>
+							<groupId>commons-lang</groupId>
+						</exclusion>
+						<exclusion>
+							<artifactId>jaxb-api</artifactId>
+							<groupId>javax.xml.bind</groupId>
+						</exclusion>
+						<exclusion>
+							<artifactId>jutils</artifactId>
+							<groupId>uk.ac.ebi</groupId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+				<!-- to access via the web interface -->
+				<dependency>
+					<groupId>uk.ac.ebi.fg</groupId>
+					<artifactId>myequivalents-wscli</artifactId>
+					<version>0.3</version>
+					<exclusions>
+						<exclusion>
+							<artifactId>logback-classic</artifactId>
+							<groupId>ch.qos.logback</groupId>
+						</exclusion>
+						<exclusion>
+							<artifactId>commons-lang</artifactId>
+							<groupId>commons-lang</groupId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<fork>true</fork>
+					<source>1.6</source>
+					<target>1.6</target> <!-- may need to be 1.7 eventually -->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<finalName>sampletab-converters-myequivalents</finalName>
+					<descriptors>
+						<descriptor>src/main/assembly/sampletab-converters-myequivalents-assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.4.1</version>
+			</plugin>
+		</plugins>
+	</build>
+</project>
