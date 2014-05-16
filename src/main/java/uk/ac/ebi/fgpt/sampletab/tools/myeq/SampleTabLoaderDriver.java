@@ -1,7 +1,9 @@
 package uk.ac.ebi.fgpt.sampletab.tools.myeq;
 
 import java.io.File;
+import java.util.List;
 
+import org.kohsuke.args4j.Argument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,8 +14,14 @@ import uk.ac.ebi.fgpt.sampletab.AbstractInfileDriver;
 
 public class SampleTabLoaderDriver extends AbstractInfileDriver<SampleTabLoaderTask> {
 
+    @Argument(required=true, index=0, metaVar="USERNAME", usage = "username for myEquivalents")
+    protected String username;
+
+    @Argument(required=true, index=1, metaVar="PASSWORD", usage = "password for myEquivalents")
+    protected String password;
     
-    private final EntityMappingManager emMgr = Resources.getInstance().getMyEqManagerFactory().newEntityMappingManager("editor", "aq9kIs7AWQF1qNvJZo1aAgXKz/M");
+    
+    private EntityMappingManager emMgr = null;
     
     // logging
     private Logger log = LoggerFactory.getLogger(getClass());
@@ -21,6 +29,13 @@ public class SampleTabLoaderDriver extends AbstractInfileDriver<SampleTabLoaderT
 
     public static void main(String[] args) {
         new SampleTabLoaderDriver().doMain(args);
+    }
+    
+    @Override
+    public void doMain(String[] args) {
+        super.doMain(args);
+        
+        emMgr = Resources.getInstance().getMyEqManagerFactory().newEntityMappingManager(username, password);
     }
     
     @Override
