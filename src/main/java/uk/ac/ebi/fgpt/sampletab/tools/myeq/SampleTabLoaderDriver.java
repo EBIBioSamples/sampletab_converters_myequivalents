@@ -30,17 +30,12 @@ public class SampleTabLoaderDriver extends AbstractInfileDriver<SampleTabLoaderT
     public static void main(String[] args) {
         new SampleTabLoaderDriver().doMain(args);
     }
-    
-    
-    @Override
-    public void doMain(String[] args) {
-        super.doMain(args);
         
-        emMgr = Resources.getInstance().getMyEqManagerFactory().newEntityMappingManager(username, password);
-    }
-    
     @Override
     protected SampleTabLoaderTask getNewTask(File inputFile) {
+        if (emMgr == null) {
+            emMgr = Resources.getInstance().getMyEqManagerFactory().newEntityMappingManager(username, password);    
+        }
         return new SampleTabLoaderTask(inputFile, emMgr);
     }
 
