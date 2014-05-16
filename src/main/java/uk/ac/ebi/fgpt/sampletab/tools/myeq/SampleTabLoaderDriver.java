@@ -14,10 +14,10 @@ import uk.ac.ebi.fgpt.sampletab.AbstractInfileDriver;
 
 public class SampleTabLoaderDriver extends AbstractInfileDriver<SampleTabLoaderTask> {
 
-    @Argument(required=true, index=0, metaVar="USERNAME", usage = "username for myEquivalents")
+    @Argument(required=true, index=1, metaVar="USERNAME", usage = "username for myEquivalents")
     protected String username;
 
-    @Argument(required=true, index=1, metaVar="PASSWORD", usage = "password for myEquivalents")
+    @Argument(required=true, index=2, metaVar="PASSWORD", usage = "password for myEquivalents")
     protected String password;
     
     
