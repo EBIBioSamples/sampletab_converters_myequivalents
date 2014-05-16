@@ -13,7 +13,7 @@ import uk.ac.ebi.fgpt.sampletab.AbstractInfileDriver;
 public class SampleTabLoaderDriver extends AbstractInfileDriver<SampleTabLoaderTask> {
 
     
-    private final EntityMappingManager emMgr = Resources.getInstance().getMyEqManagerFactory().newEntityMappingManager();
+    private final EntityMappingManager emMgr = Resources.getInstance().getMyEqManagerFactory().newEntityMappingManager("editor", "aq9kIs7AWQF1qNvJZo1aAgXKz/M");
     
     // logging
     private Logger log = LoggerFactory.getLogger(getClass());
