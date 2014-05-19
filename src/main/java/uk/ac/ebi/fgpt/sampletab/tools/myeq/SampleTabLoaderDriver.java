@@ -19,8 +19,8 @@ public class SampleTabLoaderDriver extends AbstractInfileDriver<SampleTabLoaderT
     @Option(required=true, name = "-u", aliases={"--username"}, metaVar="USERNAME", usage = "username for myEquivalents")
     protected String username;
 
-    @Option(required=true, name = "-p", aliases={"--password"}, metaVar="PASSWORD", usage = "password for myEquivalents")
-    protected String password;
+    @Option(required=true, name = "-s", aliases={"--secret"}, metaVar="SECRET", usage = "secret for myEquivalents")
+    protected String secret;
     
     private EntityMappingManager emMgr = null;
     
@@ -34,7 +34,9 @@ public class SampleTabLoaderDriver extends AbstractInfileDriver<SampleTabLoaderT
     @Override
     protected SampleTabLoaderTask getNewTask(File inputFile) {
         if (emMgr == null) {
-            emMgr = Resources.getInstance().getMyEqManagerFactory().newEntityMappingManager(username, password);    
+            //myEquivalents uses the secret for "minor" authorisation e.g. adding new mappings
+            // the password is used for "major" authorisation e.g. adding new users
+            emMgr = Resources.getInstance().getMyEqManagerFactory().newEntityMappingManager(username, secret);    
         }
         return new SampleTabLoaderTask(inputFile, emMgr);
     }
