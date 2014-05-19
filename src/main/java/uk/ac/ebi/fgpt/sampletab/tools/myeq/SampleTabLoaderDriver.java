@@ -19,7 +19,7 @@ public class SampleTabLoaderDriver extends AbstractInfileDriver<SampleTabLoaderT
     @Option(required=true, name = "-u", aliases={"--username"}, metaVar="USERNAME", usage = "username for myEquivalents")
     protected String username;
 
-    @Option(required=true, name = "-s", aliases={"--secret"}, metaVar="SECRET", usage = "secret for myEquivalents")
+    @Option(required=true, name = "-e", aliases={"--secret"}, metaVar="SECRET", usage = "secret for myEquivalents")
     protected String secret;
     
     private EntityMappingManager emMgr = null;
