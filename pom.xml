@@ -10,6 +10,19 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+	<distributionManagement>
+		<repository>
+			<id>ebi-repo-old</id>
+			<name>EBI Repository</name>
+			<url>sftp://ebi-001.ebi.ac.uk/homes/maven/public_html/m2repo</url>
+		</repository>
+		<snapshotRepository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>ebi-repo-old-snapshots</id>
+			<name>EBI Snapshots Repository</name>
+			<url>sftp://ebi-001.ebi.ac.uk/homes/maven/public_html/m2repo_snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>	
 
 	<!-- Git connection -->
 	<scm>
@@ -39,20 +52,6 @@
 			<url>http://limpopo.sourceforge.net/maven/repo</url>
 		</repository>
 	</repositories>
-
-	<distributionManagement>
-		<repository>
-			<id>ebi-repo-old</id>
-			<name>EBI Repository</name>
-			<url>sftp://ebi-001.ebi.ac.uk/homes/maven/public_html/m2repo</url>
-		</repository>
-		<snapshotRepository>
-			<uniqueVersion>false</uniqueVersion>
-			<id>ebi-repo-old-snapshots</id>
-			<name>EBI Snapshots Repository</name>
-			<url>sftp://ebi-001.ebi.ac.uk/homes/maven/public_html/m2repo_snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>	
 
 	<dependencies>
 
