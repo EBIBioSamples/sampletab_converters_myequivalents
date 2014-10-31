@@ -65,7 +65,9 @@ public class ERAsampleMapperDriver extends AbstractDriver {
 
         log.info("Getting sample ids from ERA-PRO");
         
-        Map<String, String> sampleIds = EraProManager.getInstance().getSRABioSampleMappingForDateRange(minDate, maxDate);
+        EraProManager manager = EraProManager.getInstance();
+        
+        Map<String, String> sampleIds = manager.getSRABioSampleMappingForDateRange(minDate, maxDate);
 
         log.info("Finishing getting sample ids from ERA-PRO");
         
