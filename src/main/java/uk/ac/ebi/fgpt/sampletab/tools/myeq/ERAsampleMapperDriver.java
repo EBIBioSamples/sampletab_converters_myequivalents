@@ -32,10 +32,10 @@ import uk.ac.ebi.fgpt.sampletab.sra.EraProManager;
 
 public class ERAsampleMapperDriver extends AbstractDriver {
 
-    @Argument(required = true, index = 1, metaVar = "STARTDATE", usage = "Start date as YYYY/MM/DD")
+    @Argument(required = true, index = 0, metaVar = "STARTDATE", usage = "Start date as YYYY/MM/DD")
     protected String minDateString;
 
-    @Argument(required = false, index = 2, metaVar = "ENDDATE", usage = "End date as YYYY/MM/DD")
+    @Argument(required = false, index = 1, metaVar = "ENDDATE", usage = "End date as YYYY/MM/DD")
     protected String maxDateString;
 
     private Logger log = LoggerFactory.getLogger(getClass());
