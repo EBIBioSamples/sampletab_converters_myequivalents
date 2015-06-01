@@ -19,7 +19,6 @@ import org.slf4j.LoggerFactory;
 import uk.ac.ebi.fg.myequivalents.managers.interfaces.EntityMappingManager;
 import uk.ac.ebi.fg.myequivalents.resources.Resources;
 import uk.ac.ebi.fgpt.sampletab.AbstractDriver;
-import uk.ac.ebi.fgpt.sampletab.sra.EraProManager;
 
 /**
  * This class will collect all the
