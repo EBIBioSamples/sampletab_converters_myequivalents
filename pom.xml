@@ -139,7 +139,7 @@
 				<dependency>
 					<groupId>uk.ac.ebi.fgpt</groupId>
 					<artifactId>sampletab-converters</artifactId>
-					<version>1.0.17-SNAPSHOT</version>
+					<version>1.0.18-SNAPSHOT</version>
 				</dependency>
 				<!-- MyEquivalents dependencies -->
 				<!-- to write directly to database -->
@@ -209,7 +209,7 @@
 				<dependency>
 					<groupId>uk.ac.ebi.fgpt</groupId>
 					<artifactId>sampletab-converters</artifactId>
-					<version>1.0.16</version>
+					<version>1.0.17</version>
 				</dependency>
 				<!-- MyEquivalents dependencies -->
 				<!-- to write directly to database -->
