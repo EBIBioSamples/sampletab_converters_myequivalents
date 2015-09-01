@@ -139,7 +139,7 @@
 				<dependency>
 					<groupId>uk.ac.ebi.fgpt</groupId>
 					<artifactId>sampletab-converters</artifactId>
-					<version>1.0.21-SNAPSHOT</version>
+					<version>1.0.22-SNAPSHOT</version>
 				</dependency>
 				<!-- MyEquivalents dependencies -->
 				<!-- to write directly to database -->
@@ -209,7 +209,7 @@
 				<dependency>
 					<groupId>uk.ac.ebi.fgpt</groupId>
 					<artifactId>sampletab-converters</artifactId>
-					<version>1.0.20</version>
+					<version>1.0.21</version>
 				</dependency>
 				<!-- MyEquivalents dependencies -->
 				<!-- to write directly to database -->
@@ -261,11 +261,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
+				<version>3.3</version>
 				<configuration>
 					<fork>true</fork>
-					<source>1.6</source>
-					<target>1.6</target> <!-- may need to be 1.7 eventually -->
+					<source>1.7</source>
+					<target>1.7</target> 
 				</configuration>
 			</plugin>
 			<plugin>
