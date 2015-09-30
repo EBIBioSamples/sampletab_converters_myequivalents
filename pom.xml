@@ -51,6 +51,14 @@
 			<name>Limpopo Mini-SF Repository</name>
 			<url>http://limpopo.sourceforge.net/maven/repo</url>
 		</repository>
+		
+        <repository>
+        <id>EBIBioSamples-GH-repo</id>
+        <url>https://raw.githubusercontent.com/EBIBioSamples/EBIBioSamples.github.io/maven-repo</url>
+        <snapshots>
+        <enabled>true</enabled>
+        </snapshots>
+      </repository>
 	</repositories>
 
 	<dependencies>
@@ -109,6 +117,31 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>3.2.0.RELEASE</version>
 		</dependency>
+		<!-- MyEquivalents dependencies -->
+		<!-- to write directly to database -->
+		<dependency>
+			<groupId>uk.ac.ebi.fg</groupId>
+			<artifactId>myequivalents-db</artifactId>
+			<version>1.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-io</artifactId>
+					<groupId>commons-io</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-lang</artifactId>
+					<groupId>commons-lang</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jaxb-api</artifactId>
+					<groupId>javax.xml.bind</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jutils</artifactId>
+					<groupId>uk.ac.ebi</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
 
 	<profiles>
@@ -141,47 +174,6 @@
 					<artifactId>sampletab-converters</artifactId>
 					<version>1.0.22-SNAPSHOT</version>
 				</dependency>
-				<!-- MyEquivalents dependencies -->
-				<!-- to write directly to database -->
-				<dependency>
-					<groupId>uk.ac.ebi.fg</groupId>
-					<artifactId>myequivalents-db</artifactId>
-					<version>0.3.2</version>
-					<exclusions>
-						<exclusion>
-							<artifactId>commons-io</artifactId>
-							<groupId>commons-io</groupId>
-						</exclusion>
-						<exclusion>
-							<artifactId>commons-lang</artifactId>
-							<groupId>commons-lang</groupId>
-						</exclusion>
-						<exclusion>
-							<artifactId>jaxb-api</artifactId>
-							<groupId>javax.xml.bind</groupId>
-						</exclusion>
-						<exclusion>
-							<artifactId>jutils</artifactId>
-							<groupId>uk.ac.ebi</groupId>
-						</exclusion>
-					</exclusions>
-				</dependency>
-				<!-- to access via the web interface -->
-				<dependency>
-					<groupId>uk.ac.ebi.fg</groupId>
-					<artifactId>myequivalents-wscli</artifactId>
-					<version>0.3.2</version>
-					<exclusions>
-						<exclusion>
-							<artifactId>logback-classic</artifactId>
-							<groupId>ch.qos.logback</groupId>
-						</exclusion>
-						<exclusion>
-							<artifactId>commons-lang</artifactId>
-							<groupId>commons-lang</groupId>
-						</exclusion>
-					</exclusions>
-				</dependency>
 			</dependencies>
 		</profile>
 
@@ -210,47 +202,6 @@
 					<groupId>uk.ac.ebi.fgpt</groupId>
 					<artifactId>sampletab-converters</artifactId>
 					<version>1.0.21</version>
-				</dependency>
-				<!-- MyEquivalents dependencies -->
-				<!-- to write directly to database -->
-				<dependency>
-					<groupId>uk.ac.ebi.fg</groupId>
-					<artifactId>myequivalents-db</artifactId>
-					<version>0.3.2</version>
-					<exclusions>
-						<exclusion>
-							<artifactId>commons-io</artifactId>
-							<groupId>commons-io</groupId>
-						</exclusion>
-						<exclusion>
-							<artifactId>commons-lang</artifactId>
-							<groupId>commons-lang</groupId>
-						</exclusion>
-						<exclusion>
-							<artifactId>jaxb-api</artifactId>
-							<groupId>javax.xml.bind</groupId>
-						</exclusion>
-						<exclusion>
-							<artifactId>jutils</artifactId>
-							<groupId>uk.ac.ebi</groupId>
-						</exclusion>
-					</exclusions>
-				</dependency>
-				<!-- to access via the web interface -->
-				<dependency>
-					<groupId>uk.ac.ebi.fg</groupId>
-					<artifactId>myequivalents-wscli</artifactId>
-					<version>0.3.2</version>
-					<exclusions>
-						<exclusion>
-							<artifactId>logback-classic</artifactId>
-							<groupId>ch.qos.logback</groupId>
-						</exclusion>
-						<exclusion>
-							<artifactId>commons-lang</artifactId>
-							<groupId>commons-lang</groupId>
-						</exclusion>
-					</exclusions>
 				</dependency>
 			</dependencies>
 		</profile>
