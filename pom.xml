@@ -121,7 +121,7 @@
 		<!-- to write directly to database -->
 		<dependency>
 			<groupId>uk.ac.ebi.fg</groupId>
-			<artifactId>myequivalents-db</artifactId>
+			<artifactId>myequivalents-prov-db</artifactId>
 			<version>1.0</version>
 			<exclusions>
 				<exclusion>
