@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>uk.ac.ebi.fgpt</groupId>
@@ -22,7 +23,7 @@
 			<name>EBI Snapshots Repository</name>
 			<url>sftp://ebi-001.ebi.ac.uk/homes/maven/public_html/m2repo_snapshots</url>
 		</snapshotRepository>
-	</distributionManagement>	
+	</distributionManagement>
 
 	<!-- Git connection -->
 	<scm>
@@ -51,14 +52,14 @@
 			<name>Limpopo Mini-SF Repository</name>
 			<url>http://limpopo.sourceforge.net/maven/repo</url>
 		</repository>
-		
-        <repository>
-        <id>EBIBioSamples-GH-repo</id>
-        <url>https://raw.githubusercontent.com/EBIBioSamples/EBIBioSamples.github.io/maven-repo</url>
-        <snapshots>
-        <enabled>true</enabled>
-        </snapshots>
-      </repository>
+
+		<repository>
+			<id>EBIBioSamples-GH-repo</id>
+			<url>https://raw.githubusercontent.com/EBIBioSamples/EBIBioSamples.github.io/maven-repo</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
 
 	<dependencies>
@@ -82,7 +83,7 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.14</version>
 		</dependency>
-		
+
 		<!-- command line parsing -->
 		<dependency>
 			<groupId>args4j</groupId>
@@ -224,7 +225,7 @@
 				<configuration>
 					<fork>true</fork>
 					<source>1.7</source>
-					<target>1.7</target> 
+					<target>1.7</target>
 				</configuration>
 			</plugin>
 			<plugin>
