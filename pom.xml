@@ -7,23 +7,15 @@
 	<version>1.0.10-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
+	<parent>
+		<groupId>uk.ac.ebi.fg.biosd</groupId>
+		<artifactId>biosd_common</artifactId>
+		<version>2.0-SNAPSHOT</version>
+	</parent>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
-	<distributionManagement>
-		<repository>
-			<id>ebi-repo-old</id>
-			<name>EBI Repository</name>
-			<url>sftp://ebi-001.ebi.ac.uk/homes/maven/public_html/m2repo</url>
-		</repository>
-		<snapshotRepository>
-			<uniqueVersion>false</uniqueVersion>
-			<id>ebi-repo-old-snapshots</id>
-			<name>EBI Snapshots Repository</name>
-			<url>sftp://ebi-001.ebi.ac.uk/homes/maven/public_html/m2repo_snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
 
 	<!-- Git connection -->
 	<scm>
@@ -32,27 +24,6 @@
 	</scm>
 
 	<repositories>
-		<!-- internal repositories -->
-		<repository>
-			<id>ebi-repo</id>
-			<name>EBI Repository</name>
-			<url>http://www.ebi.ac.uk/~maven/m2repo/</url>
-		</repository>
-		<repository>
-			<id>ebi-repo-snapshot</id>
-			<name>EBI Repository</name>
-			<url>http://www.ebi.ac.uk/~maven/m2repo_snapshots/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-
-		<repository>
-			<id>limpopo-repo</id>
-			<name>Limpopo Mini-SF Repository</name>
-			<url>http://limpopo.sourceforge.net/maven/repo</url>
-		</repository>
-
 		<repository>
 			<id>EBIBioSamples-GH-repo</id>
 			<url>https://raw.githubusercontent.com/EBIBioSamples/EBIBioSamples.github.io/maven-repo</url>
@@ -68,7 +39,6 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -98,13 +68,6 @@
 			<artifactId>bonecp</artifactId>
 			<version>0.7.1.RELEASE</version>
 		</dependency>
-		<!-- mysql driver for subs -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.26</version>
-			<scope>runtime</scope>
-		</dependency>
 		<!-- oracle driver for accessioning -->
 		<!-- this is not in public repos due to Oracle license -->
 		<dependency>
@@ -124,20 +87,6 @@
 			<groupId>uk.ac.ebi.fg</groupId>
 			<artifactId>myequivalents-prov-db</artifactId>
 			<version>1.0</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>commons-io</artifactId>
-					<groupId>commons-io</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>commons-lang</artifactId>
-					<groupId>commons-lang</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>jaxb-api</artifactId>
-					<groupId>javax.xml.bind</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 	</dependencies>
 
@@ -155,27 +104,11 @@
 					</resource>
 				</resources>
 			</build>
-			<repositories>
-				<repository>
-					<id>ebi-repo-snapshots</id>
-					<name>EBI Repo Snapshots</name>
-					<url>http://www.ebi.ac.uk/~maven/m2repo_snapshots</url>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-			</repositories>
 			<dependencies>
 				<dependency>
 					<groupId>uk.ac.ebi.fgpt</groupId>
 					<artifactId>sampletab-converters</artifactId>
-					<version>1.0.22-SNAPSHOT</version>
-					<exclusions>
-						<exclusion>
-							<artifactId>jutils</artifactId>
-							<groupId>uk.ac.ebi</groupId>
-						</exclusion>
-					</exclusions>
+					<version>1.0.24-SNAPSHOT</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -193,24 +126,11 @@
 					</resource>
 				</resources>
 			</build>
-			<repositories>
-				<repository>
-					<id>ebi-repo</id>
-					<name>EBI repo</name>
-					<url>http://www.ebi.ac.uk/~maven/m2repo</url>
-				</repository>
-			</repositories>
 			<dependencies>
 				<dependency>
 					<groupId>uk.ac.ebi.fgpt</groupId>
 					<artifactId>sampletab-converters</artifactId>
-					<version>1.0.21</version>
-					<exclusions>
-						<exclusion>
-							<artifactId>jutils</artifactId>
-							<groupId>uk.ac.ebi</groupId>
-						</exclusion>
-					</exclusions>
+					<version>1.0.24</version>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -224,8 +144,8 @@
 				<version>3.3</version>
 				<configuration>
 					<fork>true</fork>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<plugin>
