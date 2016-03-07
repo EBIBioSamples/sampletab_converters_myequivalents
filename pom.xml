@@ -21,7 +21,7 @@
 	<!-- Git connection -->
 	<scm>
 		<connection>scm:git:git@github.com:EBIBioSamples/sampletab_converters_myequivalents.git</connection>
-		<tag>HEAD</tag>
+		<developerConnection>scm:git:git@github.com:EBIBioSamples/sampletab_converters_myequivalents.git</developerConnection>
 	</scm>
 
 	<repositories>
