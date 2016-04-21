@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>uk.ac.ebi.fgpt</groupId>
@@ -21,8 +22,8 @@
 	<scm>
 		<connection>scm:git:git@github.com:EBIBioSamples/sampletab_converters_myequivalents.git</connection>
 		<developerConnection>scm:git:git@github.com:EBIBioSamples/sampletab_converters_myequivalents.git</developerConnection>
-	  <tag>HEAD</tag>
-  </scm>
+		<tag>HEAD</tag>
+	</scm>
 
 	<repositories>
 		<repository>
@@ -35,6 +36,11 @@
 	</repositories>
 
 	<dependencies>
+		<dependency>
+			<groupId>uk.ac.ebi.fgpt</groupId>
+			<artifactId>sampletab-converters</artifactId>
+			<version>1.0.26</version>
+		</dependency>
 
 		<!-- testing -->
 		<dependency>
@@ -105,13 +111,6 @@
 					</resource>
 				</resources>
 			</build>
-			<dependencies>
-				<dependency>
-					<groupId>uk.ac.ebi.fgpt</groupId>
-					<artifactId>sampletab-converters</artifactId>
-					<version>1.0.26-SNAPSHOT</version>
-				</dependency>
-			</dependencies>
 		</profile>
 
 		<!-- profile for production, uses files from resources-production -->
@@ -127,13 +126,6 @@
 					</resource>
 				</resources>
 			</build>
-			<dependencies>
-				<dependency>
-					<groupId>uk.ac.ebi.fgpt</groupId>
-					<artifactId>sampletab-converters</artifactId>
-					<version>1.0.25</version>
-				</dependency>
-			</dependencies>
 		</profile>
 	</profiles>
 
