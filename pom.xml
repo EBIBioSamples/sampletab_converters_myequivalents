@@ -78,11 +78,7 @@
 			<version>11.2.0.2.0</version>
 		</dependency>
 		<!-- Spring for database access object tools -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>3.2.0.RELEASE</version>
-		</dependency>
+		<!-- transitivly included from myequivalents -->
 		<!-- MyEquivalents dependencies -->
 		<!-- to write directly to database -->
 		<dependency>

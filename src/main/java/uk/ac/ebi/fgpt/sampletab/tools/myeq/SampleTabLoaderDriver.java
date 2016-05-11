@@ -12,8 +12,6 @@ import org.slf4j.LoggerFactory;
 import uk.ac.ebi.fg.myequivalents.managers.impl.db.DbManagerFactory;
 import uk.ac.ebi.fg.myequivalents.managers.interfaces.EntityMappingManager;
 import uk.ac.ebi.fg.myequivalents.managers.interfaces.ManagerFactory;
-import uk.ac.ebi.fg.myequivalents.resources.Resources;
-
 import uk.ac.ebi.fgpt.sampletab.AbstractInfileDriver;
 
 public class SampleTabLoaderDriver extends AbstractInfileDriver<SampleTabLoaderTask> {
@@ -25,8 +23,10 @@ public class SampleTabLoaderDriver extends AbstractInfileDriver<SampleTabLoaderT
     @Option(required=true, name = "-e", aliases={"--secret"}, metaVar="SECRET", usage = "secret for myEquivalents")
     protected String secret;
 
-	
+    private Logger log = LoggerFactory.getLogger(getClass());
+
 	private ManagerFactory managerFactory = null;
+	
     private EntityMappingManager emMgr = null;
     
     public static void main(String[] args) {
@@ -63,10 +63,11 @@ public class SampleTabLoaderDriver extends AbstractInfileDriver<SampleTabLoaderT
         
     @Override
     protected SampleTabLoaderTask getNewTask(File inputFile) {
+        log.info("connecting to the myequivalents database to store the mappings");
         if (emMgr == null) {
             //myEquivalents uses the secret for "minor" authorisation e.g. adding new mappings
             // the password is used for "major" authorisation e.g. adding new users
-            emMgr = Resources.getInstance().getMyEqManagerFactory().newEntityMappingManager(username, secret);    
+            emMgr = getManagerFactory().newEntityMappingManager(username, secret);
         }
         return new SampleTabLoaderTask(inputFile, emMgr);
     }

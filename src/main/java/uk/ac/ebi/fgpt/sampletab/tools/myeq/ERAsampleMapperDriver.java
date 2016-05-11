@@ -9,13 +9,13 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.kohsuke.args4j.Argument;
+import org.kohsuke.args4j.Option;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import uk.ac.ebi.fg.myequivalents.managers.impl.db.DbManagerFactory;
 import uk.ac.ebi.fg.myequivalents.managers.interfaces.EntityMappingManager;
 import uk.ac.ebi.fg.myequivalents.managers.interfaces.ManagerFactory;
-import uk.ac.ebi.fg.myequivalents.resources.Resources;
 import uk.ac.ebi.fgpt.sampletab.AbstractDriver;
 
 /**
@@ -34,12 +34,18 @@ public class ERAsampleMapperDriver extends AbstractDriver {
 
     @Argument(required = false, index = 1, metaVar = "ENDDATE", usage = "End date as YYYY/MM/DD")
     protected String maxDateString;
+    
+    @Option(required=true, name = "-u", aliases={"--username"}, metaVar="USERNAME", usage = "username for myEquivalents")
+    protected String username;
+
+    @Option(required=true, name = "-e", aliases={"--secret"}, metaVar="SECRET", usage = "secret for myEquivalents")
+    protected String secret;
 
     private Logger log = LoggerFactory.getLogger(getClass());
-
 	
 	private ManagerFactory managerFactory = null;
-    private EntityMappingManager emMgr;
+
+	private EntityMappingManager emMgr;
 
     public static void main(String[] args) {
         new ERAsampleMapperDriver().doMain(args);
@@ -100,7 +106,7 @@ public class ERAsampleMapperDriver extends AbstractDriver {
         
         log.info("connecting to the myequivalents database to store the mappings");
         if (emMgr == null) {
-            emMgr = getManagerFactory().newEntityMappingManager();
+            emMgr = getManagerFactory().newEntityMappingManager(username, secret);
         }
         // Store a pair of entities that are linked together (i.e., are equivalent)
         for (Map.Entry<String, String> entry : sampleIds.entrySet()) {
